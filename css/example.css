@@ -1,6 +1,11 @@
 body{
+    font-family: sans-serif;
     background-color: cyan;
 }
 .inline{
     display: inline-block;
+    cursor: pointer;
+}
+.red{
+    color: red;
 }
