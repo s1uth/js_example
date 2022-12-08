@@ -1,23 +1,30 @@
 const nameH1Element = document.querySelector('h1.inline');
 const connectNameElement = document.querySelector('span.red');
+const inputModalElement = document.querySelector('dialog#inputModal');
 
 const localName = localStorage.getItem("userName");
 
-if(localName) {
-    nameH1Element.textContent = localName;
-    connectNameElement.textContent = localName;
+const setName = (name) => {
+    nameH1Element.textContent = name;
+    connectNameElement.textContent = name;
 }
+
+if(localName) setName(localName);
 
 nameH1Element.onclick = () => {
-    const inputName = prompt("이름을 입력해 주세요");
+    inputModalElement.showModal();
 
-    if(inputName){
-        localStorage.setItem("userName", inputName)
+    //const inputName = prompt("이름을 입력해 주세요");
 
-        nameH1Element.textContent = inputName;
-        connectNameElement.textContent = inputName;
-    }else{
-        alert("입력되지 않았습니다.");
-    }
- 
+    // if(inputName){
+    //     localStorage.setItem("userName", inputName)
+    //     setName(inputName);
+    // }else{
+    //     alert("입력되지 않았습니다.");
+    // }
 }
+
+inputModalElement.onclick = (event) => {
+    if(event.target.nodeName==='DIALOG') inputModalElement.close();
+}
+
